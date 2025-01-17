@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: account-front-v2-prod
+    image: account-front-v2:prod
+    restart: always
+    build:
+      context: .
+      dockerfile: ./environment/prod/Dockerfile
+
+    ports:
+      - '4002:4002'
+    networks:
+      - master_network
+
+networks:
+  master_network:
+    external: true
